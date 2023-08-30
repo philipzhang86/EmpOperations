@@ -2,6 +2,7 @@ package com.curpatient.empoperations;
 
 import com.curpatient.empoperations.model.Employee;
 import com.curpatient.empoperations.service.EmpService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class EmpRepoTest {
         for(Employee e : list){
             System.out.println(e);
         }
+        Assert.assertTrue(list.size() > 0);
     }
 
     @Test
