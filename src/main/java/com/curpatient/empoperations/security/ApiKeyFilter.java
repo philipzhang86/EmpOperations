@@ -14,11 +14,19 @@ public class ApiKeyFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            // This is a CORS preflight request, skip the API key check
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String apiKey = request.getHeader(API_KEY_HEADER);
         if (!API_KEY_VALUE.equals(apiKey)) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid API Key");
             return;
         }
+
         filterChain.doFilter(request, response);
     }
+
 }

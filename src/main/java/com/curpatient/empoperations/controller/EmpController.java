@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin//这里还差一个CORS address
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/employees")
 public class EmpController {

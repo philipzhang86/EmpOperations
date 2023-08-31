@@ -27,12 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and()  // activate CORS
                 .csrf().disable()
                 .addFilterBefore(new ApiKeyFilter(), UsernamePasswordAuthenticationFilter.class) // Add our custom API key filter
-                .authorizeRequests()
-                .antMatchers("/api/employees/**").authenticated() // Secure our end points
+                .authorizeRequests()//
+                .antMatchers("/api/login", "/api/employees/**").permitAll() //
                 .and()
                 .httpBasic(); // Use Basic authentication
+
     }
 
     @Bean
