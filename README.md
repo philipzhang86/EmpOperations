@@ -48,9 +48,6 @@ INSERT INTO User (username, password) VALUES ('admin', 'password123');  -- Note:
 - `controller`: Handles web requests related to employees and user authentication.
 - `security`: Configures the project's security settings and authentication mechanisms.
 
-## Testing
-Run `mvnw test` in the root directory of the project to execute all tests.
-
 ## Known Issues
 Due to the project requirement of hardcoded API authentication, there's a security risk. It's recommended to adopt JWT token generation for authentication purposes.
 
